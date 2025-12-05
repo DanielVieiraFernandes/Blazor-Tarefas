@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="utf-8" />
@@ -8,8 +8,16 @@
     <link rel="stylesheet" href="@Assets["lib/bootstrap/dist/css/bootstrap.min.css"]" />
     <link rel="stylesheet" href="@Assets["app.css"]" />
     <link rel="stylesheet" href="@Assets["BlazorTarefas.styles.css"]" />
+    @******************************************************************************************@
+    @*O Blazor utiliza o ImportMap para injetar automaticamente mapas de importação JavaScript*@
+    @*necessários para os recursos do Blazor WebAssembly quando ele estiver sendo usado.      *@
+    @******************************************************************************************@
     <ImportMap />
     <link rel="icon" type="image/png" href="favicon.png" />
+    @******************************************************************************************@
+    @*Atua como um ponto de saída onde o Blazor vai injetar dinâmicamente o                   *@
+    @*conteúdo gerado por outros componentes Blazor que utilizam o componente HeadContent.    *@
+    @******************************************************************************************@
     <HeadOutlet />
 </head>
 

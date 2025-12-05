@@ -1,6 +1,12 @@
-﻿<Router AppAssembly="typeof(Program).Assembly" AdditionalAssemblies="new[] { typeof(Client._Imports).Assembly }">
+﻿@*Procura por páginas com o atributo @page tanto no projeto do Server como no projeto Client*@
+<Router AppAssembly="typeof(Program).Assembly" AdditionalAssemblies="new[] { typeof(Client._Imports).Assembly }">
+    @*Define o que o Blazor deve fazer quando encontrar uma rota válida*@
     <Found Context="routeData">
+        @*Renderiza o conteúdo da página
+        - Define o layout padrão para as páginas que não especificam um layout diferente
+        *@
         <RouteView RouteData="routeData" DefaultLayout="typeof(Layout.MainLayout)" />
+        @*Toda vez que um usuário navegar para a página, o foco irá para o elemento <h1>*@
         <FocusOnNavigate RouteData="routeData" Selector="h1" />
     </Found>
 </Router>
