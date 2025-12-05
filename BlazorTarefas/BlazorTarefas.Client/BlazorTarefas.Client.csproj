@@ -12,4 +12,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.11" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\BlazorTarefas.Shared\BlazorTarefas.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

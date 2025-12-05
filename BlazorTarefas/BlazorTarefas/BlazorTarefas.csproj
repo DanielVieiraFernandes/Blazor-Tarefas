@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\BlazorTarefas.Shared\BlazorTarefas.Shared.csproj" />
     <ProjectReference Include="..\BlazorTarefas.Client\BlazorTarefas.Client.csproj" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="9.0.11" />
   </ItemGroup>
