@@ -1,0 +1,48 @@
+﻿@page "/tarefas-resumo"
+@rendermode InteractiveWebAssembly
+
+<h4>Resumo Tarefas</h4>
+
+<h5>
+    Usando <b>rendermode InteractiveWebAssembly</b>
+</h5>
+<br/>
+
+@if(tarefas == null)
+{
+    <p class="text-muted">Carregando dados...</p>
+} 
+else if (!tarefas.Any())
+{
+    <p class="text-muted">Nenhuma tarefa encontrada.</p>
+}
+else
+{
+    <ul class="list-group">
+        <li class="list-group-item">
+            <strong>Total de Tarefas: </strong> @tarefas.Count
+        </li>
+        <li class="list-group-item">
+            <strong>Concluídas: </strong> @tarefas.Count(t => t.Concluida)
+        </li>
+        <li class="list-group-item">
+            <strong>Pendentes: </strong> @tarefas.Count(t => !t.Concluida) 
+        </li>
+        <li class="list-group-item">
+            <strong>Data da primeira tarefa: </strong> @tarefas.Min(t => t.DataCriacao).ToString("dd/MM/yyyy")
+        </li>
+        <li class="list-group-item">
+            <strong>Data da última tarefa: </strong> @tarefas.Max(t => t.DataCriacao).ToString("dd/MM/yyyy")
+        </li>
+    </ul>
+    
+}
+
+@code {
+    private List<Tarefa>? tarefas;
+
+    protected override void OnInitialized()
+    {
+        tarefas = TarefaDados.ObterTarefas();
+    }
+}
