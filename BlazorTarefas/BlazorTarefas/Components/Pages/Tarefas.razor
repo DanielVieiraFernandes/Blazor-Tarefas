@@ -1,5 +1,15 @@
 ﻿@page "/tarefas"
+@page "/tarefas/{status}"
+@page "/lista"
+
 @rendermode InteractiveServer
+
+@inject NavigationManager Nav
+
+<button class="btn btn-link mb-3" @onclick="IrParaResumo">
+    <i class="bi bi-bar-chart-line"></i>
+    Ver resumo
+</button>
 
 <h1>Lista de tarefas</h1>
 <h5>Usando <b>rendermode InteractiveServer</b></h5>
@@ -45,12 +55,24 @@ else
 }
 
 @code {
+
+    // Parâmetro de rota 
+    [Parameter]
+    public string? Status { get; set; }
+
     private List<Tarefa>? tarefas;
 
     protected override async Task OnInitializedAsync()
     {
         await Task.Delay(2000); 
-        tarefas = TarefaDados.ObterTarefas();
+        var todas = TarefaDados.ObterTarefas();
+
+        tarefas = Status?.ToLower() switch
+        {
+            "concluidas" => todas.Where(t => t.Concluida).ToList(),
+            "pendentes" => todas.Where(t => !t.Concluida).ToList(),
+            _ => todas
+        };
     }
 
     /// <summary>
@@ -70,4 +92,6 @@ else
         if (tarefa != null)
             tarefa.Concluida = !tarefa.Concluida;
     }
+
+    private void IrParaResumo() => Nav.NavigateTo("/tarefas-resumo");
 }

@@ -4,6 +4,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @******************************************************************************************@
+    @*Define o caminho base para todas as URLs relativas da aplicação                         *@
+    @******************************************************************************************@
     <base href="/" />
     <link rel="stylesheet" href="@Assets["lib/bootstrap/dist/css/bootstrap.min.css"]" />
     <link rel="stylesheet" href="@Assets["app.css"]" />
@@ -14,6 +17,11 @@
     @******************************************************************************************@
     <ImportMap />
     <link rel="icon" type="image/png" href="favicon.png" />
+
+    @******************************************************************************************@
+    @*Vinculando uma folha de estilo externa via CDN                                          *@
+    @******************************************************************************************@
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     @******************************************************************************************@
     @*Atua como um ponto de saída onde o Blazor vai injetar dinâmicamente o                   *@
     @*conteúdo gerado por outros componentes Blazor que utilizam o componente HeadContent.    *@

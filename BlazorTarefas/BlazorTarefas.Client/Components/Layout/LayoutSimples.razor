@@ -1,0 +1,19 @@
+﻿@inherits LayoutComponentBase
+
+<div class="container-fluid">
+    <header class="bg-dark text-white text-center p-3 mb-4">
+        <h1>Meu Layout Simplificado</h1>
+        <p>Este layout é usado para páginas específicas.</p>
+    </header>
+
+    <main>
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+
+    <footer class="text-center text-muted mt-5">
+        <p>&copy; @DateTime.Now.Year - Curso de Blazor</p>
+    </footer>
+</div>
+

@@ -6,6 +6,29 @@
 
 <input type="checkbox" title="Navigation menu" class="navbar-toggler" />
 
+@*
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+O Componente NavLink é um componente especial do Blazor para gerar links de navegação interna.
+Além de renderizar um <a href="">, ele: 
+    - Aplica automaticamente a classe CSS "active" quando o link corresponde à URL atual.
+    - Evita o recarregamento da página (navegação client-side)
+    - Funciona com o roteador do Blazor
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+****************************************************************************************************
+Resultado exemplo:
+    
+    <a href="/tarefas" class="active">Tarefas</a>
+****************************************************************************************************
+
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Propriedade Match
+Essa propriedade define quando o link será considerado ativo.
+NavLinkMatch.All: O link é ativo apenas quando a URL atual corresponde exatamente ao href do NavLink.
+NavLinkMatch.Prefix(padrão): O link é ativo quando a URL atual começa com o href do NavLink.
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+*@
+
 <div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
     <nav class="nav flex-column">
         <div class="nav-item px-3">
@@ -32,6 +55,32 @@
             </NavLink>
         </div>
 
+        @* Tarefas pendentes *@
+        @* 
+            ***************************************************
+            Ao acessar o componente por aqui, será exibido
+            Somente as tarefas pendentes. 
+            ***************************************************
+        *@
+        <div class="nav-item px-3">
+            <NavLink class="nav-link text-warning" href="tarefas/pendentes" Match="NavLinkMatch.All">
+                <span class="bi bi-hourglass-split" aria-hidden="true"></span> Pendentes
+            </NavLink>
+        </div>
+
+        @* Tarefas concluídas *@
+        @* 
+            ***************************************************
+            Ao acessar o componente por aqui, será exibido
+            Somente as tarefas concluídas. 
+            ***************************************************
+        *@
+        <div class="nav-item px-3">
+            <NavLink class="nav-link text-success" href="tarefas/concluidas" Match="NavLinkMatch.All">
+                <span class="bi bi-check-circle" aria-hidden="true"></span> Concluídas
+            </NavLink>
+        </div>
+
 
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="tarefas-resumo">
@@ -40,4 +89,3 @@
         </div>
     </nav>
 </div>
-
