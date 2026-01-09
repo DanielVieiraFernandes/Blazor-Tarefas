@@ -4,6 +4,22 @@
 
 <h4>Resumo Tarefas</h4>
 
+<div class="alert alert-primary mt-4 p-3" style="border-left: 5px solid #0d6efd">
+    <h5 class="alert-heading fw-bold">Diagnóstico de Renderização</h5>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-4">Local de Execução: </dt>
+        <dd class="col-sm-8"><code>@RendererInfo.Name</code></dd>
+
+        <dt class="col-sm-4">É interativo (agora): </dt>
+        <dd class="col-sm-8"><code>@RendererInfo.IsInteractive</code></dd>
+
+        <dt class="col-sm-4">Modo Atribuído: </dt>
+        <dd class="col-sm-8"><code>@(AssignedRenderMode?.ToString() ?? "Nenhum (Estático/SSR)")</code></dd>
+    </dl>
+</div>
+
+
 <div class="mb-4">
     <NavLink href="/" class="btn btn-secondary">
         <i class="bi bi-arrow-left-circle" /> Voltar para o início

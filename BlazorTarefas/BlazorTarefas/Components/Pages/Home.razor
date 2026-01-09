@@ -6,3 +6,39 @@
 
 <h2>Renderização Static Server Rendering (SSR)</h2>
 
+@*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**@
+@* 
+    Com RenderInfo e AssignedRenderMode
+    descobrimos o contexto de renderização
+    do componente. 
+
+    - Onde está executando
+    - Se é interativo
+    - Qual modo de renderização foi atribuído
+*@
+@*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**@
+<div class="alert alert-info mt-4">
+    <h4>Informações de Renderização</h4>
+    <ul>
+        <li>
+            <strong>Onde estou executando agora?</strong>
+            <span>No <strong>@RendererInfo.Name</strong>.</span>
+        </li>
+        <li>
+            <strong>Estou interativo neste momento?</strong>
+            <span>@(RendererInfo.IsInteractive ? "Sim" : "Não, estou em pré-renderização ou sou estático.")</span>
+        </li>
+        <li>
+            <strong>Modo de renderização atribuído: </strong>
+
+            @if(AssignedRenderMode is not null)
+            {
+                <span>O modo <strong>@AssignedRenderMode.GetType().Name</strong> foi atribuído.</span>
+            }
+            else
+            {
+                <span>Nenhum modo interativo foi atribuído (Estático).</span>
+            }
+        </li>
+    </ul>
+</div>
