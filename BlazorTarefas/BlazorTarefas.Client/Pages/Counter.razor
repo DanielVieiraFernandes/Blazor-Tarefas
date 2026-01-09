@@ -8,16 +8,29 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-4">Local de Execução: </dt>
+        @****************************************************************************************************@
+        @* Retorna o local de execução do componente:                                                       *@
+        @* - Static (Renderização estática no servidor (SSR), sem capacidade de interatividade              *@
+        @* - Server (Renderização no servidor, mas como parte de um circuito interativo (InteractiveServer) *@
+        @* - WebAssembly (Renderização no cliente, dentro do runtime do WebAssembly (InteractiveWebAssembly)*@
+        @****************************************************************************************************@
         <dd class="col-sm-8"><code>@RendererInfo.Name</code></dd>
-
         <dt class="col-sm-4">É interativo (agora): </dt>
+        @*******************************************************************@
+        @* Retorna se o componente está interativo no momento *@
+        @*******************************************************************@
         <dd class="col-sm-8"><code>@RendererInfo.IsInteractive</code></dd>
 
         <dt class="col-sm-4">Modo Atribuído: </dt>
-        <dd class="col-sm-8"><code>@(AssignedRenderMode?.ToString() ?? "Nenhum (Estático/SSR)")</code></dd>
+        @********************************************************************@
+        @* Retorna o modo de renderização atribuído ao componente:          *@
+        @*  - InteractiveWebAssembly                                        *@
+        @*  - InteractiveServer                                             *@
+        @*  - InteractiveAuto                                               *@
+        @********************************************************************@
+        <dd class="col-sm-8"><code>@(AssignedRenderMode?.GetType().Name ?? "Nenhum (Estático/SSR)")</code></dd>
     </dl>
 </div>
-
 <h1>Counter</h1>
 <h5>
     Usando <b>rendermode InteractiveAuto</b>
